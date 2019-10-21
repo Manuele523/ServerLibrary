@@ -1,18 +1,23 @@
 package it.library.controller;
 
 import it.library.dto.Author;
+import it.library.dto.Book;
+import it.library.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.awt.print.Book;
 import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class AppController {
-//List<Book>
+
+    @Autowired
+    private BookService bookService;
+
 
     @RequestMapping("/")
     public String main() {
@@ -20,9 +25,10 @@ public class AppController {
     }
 
     @RequestMapping(value = "/getAdvisedBooks", method = RequestMethod.GET)
-    public String getBooks() {
-        System.out.println("ECCOMI /getAdvisedBooks");
-        return "STRING";
+    public List<Book> getBooks() {
+
+        List<Book> listBook = bookService.getAllBooks();
+        return listBook;
     }
 
     @RequestMapping(value = "/getInfoAuthor", method = RequestMethod.GET)

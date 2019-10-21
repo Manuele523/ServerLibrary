@@ -1,11 +1,13 @@
 package it.library.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "book")
-public class Books {
+public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,15 +21,16 @@ public class Books {
     private String code;
 
     @Column(name = "publicationdate")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date publicationdate;
 
     @Column(name = "price")
     private Float price;
 
-    public Books() {
+    public Book() {
     }
 
-    public Books(String title, String code, Date publicationdate, Float price) {
+    public Book(String title, String code, Date publicationdate, Float price) {
         this.title = title;
         this.code = code;
         this.publicationdate = publicationdate;
