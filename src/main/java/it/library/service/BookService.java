@@ -13,8 +13,11 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-     public List<Book> getAllBooks(){
-         return bookRepository.getBooks();
-     }
+    public List<Book> getStarBook() {
+        return bookRepository.getStar();
+    }
 
+    public List<Book> getAllBook() {
+        return bookRepository.getBook();
+    }
 }

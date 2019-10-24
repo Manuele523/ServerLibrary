@@ -17,24 +17,33 @@ public class Book {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "code")
+    @Column(name = "isbn")
     private String code;
 
     @Column(name = "publicationdate")
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date publicationdate;
 
     @Column(name = "price")
     private Float price;
 
+    @Column(name = "storyline")
+    private String storyline;
+
+    @Column(name = "star")
+    private Boolean star;
+
+
     public Book() {
     }
 
-    public Book(String title, String code, Date publicationdate, Float price) {
+    public Book(String title, String code, Date publicationdate, Float price, String storyline, Boolean star) {
         this.title = title;
         this.code = code;
         this.publicationdate = publicationdate;
         this.price = price;
+        this.storyline = storyline;
+        this.star = star;
     }
 
     public Long getId() {
@@ -75,5 +84,21 @@ public class Book {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public String getStoryline() {
+        return storyline;
+    }
+
+    public void setStoryline(String storyline) {
+        this.storyline = storyline;
+    }
+
+    public Boolean getStar() {
+        return star;
+    }
+
+    public void setStar(Boolean star) {
+        this.star = star;
     }
 }

@@ -11,7 +11,9 @@ import java.util.List;
 @Repository
 public interface BookRepository extends CrudRepository<Book, Long> {
 
-    @Query(value = "SELECT * FROM book", nativeQuery = true)
-    public List<Book> getBooks();
+    @Query(value = "SELECT * FROM book WHERE star = 1", nativeQuery = true)
+    public List<Book> getStar();
 
+    @Query(value = "SELECT * FROM book", nativeQuery = true)
+    public List<Book> getBook();
 }
