@@ -1,10 +1,7 @@
 package it.library.controller;
 
-import it.library.dto.Author;
-import it.library.dto.Book;
-import it.library.dto.Type;
-import it.library.service.BookService;
-import it.library.service.TypeService;
+import it.library.dto.*;
+import it.library.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +16,9 @@ public class AppController {
 
     @Autowired
     private TypeService typeService;
+
+    @Autowired
+    private AdminService adminService;
 
 
     @RequestMapping("/")
@@ -49,10 +49,16 @@ public class AppController {
     }
 
 
-
     @RequestMapping(value = "/getInfoAuthor", method = RequestMethod.GET)
     public List<Author> getInfoAuthor() {
         return null;
     }
 
+
+    /* ADMINISTRATOR */
+    @RequestMapping(value = "/getAdmin", method = RequestMethod.POST)
+    public Admin getAdmin(@RequestBody Admin admin) {
+        Admin validateAdmin = adminService.getValidateAdmin(admin);
+        return validateAdmin ;
+    }
 }
